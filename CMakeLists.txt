@@ -14,7 +14,6 @@ enable_testing()
 conan_basic_setup()
 
 file(GLOB_RECURSE sources "src/**.cpp")
-list(FILTER sources EXCLUDE REGEX ".*main.cpp$")
 
 file(GLOB_RECURSE test_cases "test/**.cpp")
 

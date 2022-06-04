@@ -117,12 +117,12 @@ public:
   template<typename T>
   T const& ref() const
   {
-    return std::as_const(any).data();
+    return *static_cast<T const*>(any.data());
   }
   template<typename T>
   T& ref()
   {
-    return *static_cast<T*>(any.data());
+    return const_cast<T&>(std::as_const(*this).template ref<T>());
   }
 
   operator bool() const { return any.operator bool(); }
