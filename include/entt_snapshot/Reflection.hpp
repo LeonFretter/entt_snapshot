@@ -117,7 +117,12 @@ public:
   template<typename T>
   T const& ref() const
   {
-    return *static_cast<T const*>(any.data());
+    auto cast = any.try_cast<T>();
+    if (!cast) {
+      throw std::runtime_error("Invalid cast from any");
+    }
+
+    return *cast;
   }
   template<typename T>
   T& ref()
@@ -165,6 +170,7 @@ private:
   }
 
   void doLoad(InputArchive archive);
+  void doSave(OutputArchive archive) const;
 
 private:
   entt::meta_any any;
