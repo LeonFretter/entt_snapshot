@@ -206,7 +206,10 @@ void
 doEmplace(entt::handle handle, void* data)
 {
   auto& comp = *static_cast<T*>(data);
-  handle.emplace_or_replace<T>(std::move(comp));
+  if (handle.all_of<T>()) {
+    handle.remove<T>();
+  }
+  handle.emplace<T>(std::move(comp));
 }
 
 template<typename T>
