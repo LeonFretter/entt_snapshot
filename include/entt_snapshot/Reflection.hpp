@@ -130,6 +130,16 @@ public:
     return const_cast<T&>(std::as_const(*this).template ref<T>());
   }
 
+  /**
+   * Will contain invalid any if conversion fails
+   */
+  template<typename T>
+  Any convert() const
+  {
+    auto res = any.allow_cast<T>();
+    return Any{ std::move(res) };
+  }
+
   operator bool() const { return any.operator bool(); }
 
   Reflection reflection() const { return Reflection{ any.type() }; }
