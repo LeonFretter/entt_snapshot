@@ -15,26 +15,32 @@ Reflection::name() const
 
 Reflection::Reflection(entt::meta_type in_type)
   : _type(in_type)
-{}
+{
+}
 
 Reflection::Reflection(entt::hashed_string name)
   : _type(entt::resolve(name))
-{}
+{
+}
 
 Reflection::Reflection(std::string const& name)
   : Reflection(entt::hashed_string{ name.c_str() })
-{}
+{
+}
 
 Reflection::Reflection(std::string_view name)
   : Reflection(entt::hashed_string{ name.data() })
-{}
+{
+}
 
 Reflection::Reflection(entt::id_type type_id)
   : _type(entt::resolve(type_id))
-{}
+{
+}
 Reflection::Reflection(entt::type_info type_info)
   : _type(entt::resolve(type_info))
-{}
+{
+}
 
 #pragma endregion // reflection
 
@@ -107,7 +113,8 @@ ComponentReflection::emplace(entt::handle h) const
 
 ComponentReflection::ComponentReflection(Reflection in_reflection)
   : _reflection(in_reflection)
-{}
+{
+}
 
 #pragma endregion // component_reflection
 
@@ -127,7 +134,8 @@ Handle::doSave(OutputArchive archive) const
 
 Handle::Handle(entt::meta_any const& any)
   : any(any)
-{}
+{
+}
 
 #pragma endregion // handle
 
@@ -143,7 +151,8 @@ Any::doLoad(InputArchive archive)
 
 Any::Any(entt::meta_any any)
   : any(any)
-{}
+{
+}
 
 #pragma endregion // any
 

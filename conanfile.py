@@ -11,7 +11,7 @@ class EnttSnapshot(ConanFile):
     options = {"shared": [True, False], "only_lib": [True, False]}
     default_options = {"shared": True, "only_lib": True}
     generators = "cmake", "VSCodeProperties"
-    requires = ["code_cpp_props/0.1", "cereal/1.3.1", "entt/3.9.0"]
+    requires = ["code_cpp_props/0.1", "cereal/1.3.1", "entt/3.10.3"]
     exports_sources = "include*", "src*", "CMakeLists.txt"
 
     def build(self):
